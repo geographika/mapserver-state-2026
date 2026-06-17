@@ -1,0 +1,151 @@
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## MapServer 8.6 Release
+
+        - [MapServer 8.6.0](https://mapserver.org/development/announce/8-6.html) released 3rd of December 2025
+        - **10** contributors to this release
+        - **109** Commits
+        - Full [CHANGELOG](https://mapserver.org/development/changelog/changelog-8-6.html)
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-138.html) MapServer Homepage
+
+        <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
+            <img src="images/mapserver-index-page.png" style="max-width: 45%; border: 1px solid black;" />
+            <img src="images/mapserver-index-page-json.png" style="max-width: 45%; border: 1px solid black;" />
+        </div>
+    </script>
+</section>
+
+<section data-markdown data-background-image="images/users-between-lines-solid.svg" data-background-size="40%" data-background-opacity="10%">
+    <script type="text/template">
+        ## GDAL Pipeline Support
+
+        - https://mapserver.github.io/getting-started-with-mapserver/advanced/gdalg/
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## MapServer 8.6 Patch Releases
+
+        - [MapServer 8.6.4](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-3-to-8-6-4) 2026-06-01
+        - [MapServer 8.6.3](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-2-to-8-6-3) 2026-05-07
+        - [MapServer 8.6.2](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-1-to-8-6-2) 2026-04-19
+        - [MapServer 8.6.1](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-0-to-8-6-1) 2026-03-23
+
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ## Extra Parameters
+
+        ```mapfile
+        WEB
+            VALIDATION
+            'token' '^[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+$'
+            'user_id' '^[0-9]+$' # only allow integers
+            'default_token' 'MISSING'
+            'default_user_id' '-1'
+            END
+            METADATA
+            "ows_extra_params" "token=%TOKEN%&user_id=%USER_ID%"
+        ```
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/lock.svg" data-background-opacity="0.05" data-background-size="50%" style="font-size:0.65em;">
+    <script type="text/template">
+        ## Security Policy
+
+        | Version | Supported | Support Until |
+        |---------|-----------|---------------|
+        | 8.6.x   | ✅        |               |
+        | 8.4.x   | ❌        |               |
+        | 8.2.x   | ❌        |               |
+        | 8.0.x   | ❌        |               |
+        | 7.6.x   | ❌        | 2025-09-12    |
+        | 7.4.x   | ❌        |               |
+        | 7.2.x   | ❌        |               |
+        | 7.0.x   | ❌        |               |
+        | 6.4.x   | ❌        |               |
+        | < 6.4   | ❌        |               |
+
+        See the [MapServer Security Policy](https://github.com/MapServer/MapServer/blob/main/SECURITY.md)
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ## Security Guidance
+
+        ```mapfile
+        MAP
+            WEB
+                METADATA
+                    "ows_sld_enabled" "false"
+        ```
+
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+
+        - Outbound server access
+        - Read-only database access, only tables required
+        - Service accounts for database and network access
+        - Ensure `VALIDATION` on any [Run-time Substitution](https://mapserver.org/cgi/runsub.html) variables
+        - Don't create Mapfiles based on unvalidated user input
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## MapServer 8.8 Roadmap
+
+
+        [8.8 Release Roadmap](https://github.com/MapServer/MapServer/milestone/66)
+
+
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGCAPI Features: Filtering
+
+
+        [OGCAPI Features Part 3 Filtering: add support for 'Queryables' and 'Queryables as query parameter'](https://github.com/MapServer/MapServer/pull/7433)
+
+        ```mapfile
+        LAYER
+            METADATA
+                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
+            END
+        END
+        ```
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
+    <script type="text/template">
+        ## MapServer 8.8 Performance Improvements
+
+        - [Add new fallback_to_map_extent to avoid layer extent calculations](https://github.com/MapServer/MapServer/pull/7449)
+        - [Allow `use_default_extent_for_getfeature` to be set at the MAP level](https://github.com/MapServer/MapServer/pull/7453)
+        - [WMS: rework building of the layer tree to make it faster, and understandable!](https://github.com/MapServer/MapServer/pull/7410)
+
+          + On a 103 MB Mapfile with 6,130 layers and 3 level of nesting, WMS GetCapabilities response goes from **56** seconds to **5** seconds
+    </script>
+</section>
+

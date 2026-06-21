@@ -5,3 +5,15 @@
     clear: both;
     text-align: right;
 }
+
+.reveal section img.bordered {
+    border: 0.8px solid #333;
+    box-shadow: none;
+}
+
+.reveal h2 sup a {
+    font-size: 0.5em;
+    vertical-align: super;
+    color: #888;
+    text-decoration: none;
+}

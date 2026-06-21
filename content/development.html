@@ -41,20 +41,26 @@
     </script>
 </section>
 
-<section data-markdown>
+<section data-markdown style="font-size:0.65em;">
     <script type="text/template">
-        ## Extra Parameters
+        ## [`ows_extra_params`](https://mapserver.org/ogc/ogc_api.html#web-object-metadata) <sup><a href="https://github.com/MapServer/MapServer/pull/7360">*</a></sup>
+
+         <img class="bordered" src="images/api_links.png" style="width: 50%; vertical-align:middle;" />
+
+         https://example.com/ogcapi/?f=html&token=eyJ9.e30.SflKxw&user_id=12345
 
         ```mapfile
         WEB
             VALIDATION
-            'token' '^[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+$'
-            'user_id' '^[0-9]+$' # only allow integers
-            'default_token' 'MISSING'
-            'default_user_id' '-1'
+                'token' '^[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+$'
+                'user_id' '^[0-9]+$' # only allow integers
+                'default_token' 'MISSING'
+                'default_user_id' '-1'
             END
             METADATA
-            "ows_extra_params" "token=%TOKEN%&user_id=%USER_ID%"
+                "ows_extra_params" "token=%TOKEN%&user_id=%USER_ID%"
+                # the above parameters are automatically added to allowed list of parameters
+                "oga_compliance_mode" "true" # unknown parameters will throw an error
         ```
 
     </script>
@@ -83,7 +89,7 @@
 
 <section data-markdown>
     <script type="text/template">
-        ## Security Guidance
+        ## Security Best Practices
 
         ```mapfile
         MAP
@@ -95,11 +101,12 @@
     </script>
 </section>
 
-<section data-markdown>
+<section data-markdown data-background="images/lock.svg" data-background-opacity="0.05" data-background-size="50%" style="font-size:0.85em;">
     <script type="text/template">
+        ## Security Best Practices
 
-        - Outbound server access
-        - Read-only database access, only tables required
+        - Restrict **outbound** server access
+        - **Read-only** database access, only tables required
         - Service accounts for database and network access
         - Ensure `VALIDATION` on any [Run-time Substitution](https://mapserver.org/cgi/runsub.html) variables
         - Don't create Mapfiles based on unvalidated user input
@@ -125,6 +132,37 @@
 
 
         [OGCAPI Features Part 3 Filtering: add support for 'Queryables' and 'Queryables as query parameter'](https://github.com/MapServer/MapServer/pull/7433)
+        [OGC API Features: implement CQL2 text filtering from Part 3](https://github.com/MapServer/MapServer/pull/7436)
+
+        ```mapfile
+        LAYER
+            METADATA
+                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
+            END
+        END
+        ```
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGCAPI Features: Filtering
+
+CQL2-text
+CQL2-JSON
+
+    </script>
+</section>
+
+
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls
+
+
+        [OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls](https://github.com/MapServer/MapServer/pull/7433)
 
         ```mapfile
         LAYER

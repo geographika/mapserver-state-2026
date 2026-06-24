@@ -1,0 +1,529 @@
+{
+    "linkset": [
+        {
+            "has-error": false,
+            "key": "ARCGIS",
+            "layer-count": 2,
+            "name": "arcgis",
+            "service-desc": [
+                {
+                    "href": "/ARCGIS/?f=json",
+                    "title": "ARCGIS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/ARCGIS/",
+                    "title": "ARCGIS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "arcgis"
+        },
+        {
+            "has-error": false,
+            "key": "CLUSTERS",
+            "layer-count": 1,
+            "name": "Clusters",
+            "service-desc": [
+                {
+                    "href": "/CLUSTERS/?f=json",
+                    "title": "CLUSTERS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/CLUSTERS/",
+                    "title": "CLUSTERS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Clusters"
+        },
+        {
+            "has-error": false,
+            "key": "CONTOURS",
+            "layer-count": 2,
+            "name": "Raster",
+            "service-desc": [
+                {
+                    "href": "/CONTOURS/?f=json",
+                    "title": "CONTOURS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/CONTOURS/",
+                    "title": "CONTOURS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Raster"
+        },
+        {
+            "has-error": false,
+            "key": "COUNTRIES",
+            "layer-count": 1,
+            "name": "mymap",
+            "service-desc": [
+                {
+                    "href": "/COUNTRIES/?f=json",
+                    "title": "COUNTRIES",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/COUNTRIES/",
+                    "title": "COUNTRIES",
+                    "type": "text/html"
+                }
+            ],
+            "title": "mymap"
+        },
+        {
+            "has-error": false,
+            "key": "DIRECTION",
+            "layer-count": 2,
+            "name": "Direction",
+            "service-desc": [
+                {
+                    "href": "/DIRECTION/?f=json",
+                    "title": "DIRECTION",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/DIRECTION/",
+                    "title": "DIRECTION",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Direction"
+        },
+        {
+            "has-error": false,
+            "key": "GDALG",
+            "layer-count": 2,
+            "name": "GDALG",
+            "service-desc": [
+                {
+                    "href": "/GDALG/?f=json",
+                    "title": "GDALG",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/GDALG/",
+                    "title": "GDALG",
+                    "type": "text/html"
+                }
+            ],
+            "title": "GDALG"
+        },
+        {
+            "has-error": false,
+            "key": "LAKES",
+            "layer-count": 2,
+            "name": "ItascaLakes",
+            "service-desc": [
+                {
+                    "href": "/LAKES/?f=json",
+                    "title": "LAKES",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/LAKES/",
+                    "title": "LAKES",
+                    "type": "text/html"
+                }
+            ],
+            "title": "ItascaLakes"
+        },
+        {
+            "has-error": false,
+            "key": "LANDUSE",
+            "layer-count": 1,
+            "name": "Landuse",
+            "service-desc": [
+                {
+                    "href": "/LANDUSE/?f=json",
+                    "title": "LANDUSE",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/LANDUSE/",
+                    "title": "LANDUSE",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Landuse"
+        },
+        {
+            "has-error": false,
+            "key": "LINES",
+            "layer-count": 1,
+            "name": "Roads",
+            "service-desc": [
+                {
+                    "href": "/LINES/?f=json",
+                    "title": "LINES",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/LINES/",
+                    "title": "LINES",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Roads"
+        },
+        {
+            "has-error": false,
+            "key": "OGCAPI-FEATURES",
+            "layer-count": 2,
+            "name": "OGC API - Features",
+            "service-desc": [
+                {
+                    "href": "/OGCAPI-FEATURES/?f=json",
+                    "title": "OGCAPI-FEATURES",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/OGCAPI-FEATURES/",
+                    "title": "OGCAPI-FEATURES",
+                    "type": "text/html"
+                }
+            ],
+            "title": "OSM Features"
+        },
+        {
+            "has-error": false,
+            "key": "OTHER-PROJECTIONS",
+            "layer-count": 3,
+            "name": "Other_Projections",
+            "service-desc": [
+                {
+                    "href": "/OTHER-PROJECTIONS/?f=json",
+                    "title": "OTHER-PROJECTIONS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/OTHER-PROJECTIONS/",
+                    "title": "OTHER-PROJECTIONS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Other_Projections"
+        },
+        {
+            "has-error": false,
+            "key": "POINTS",
+            "layer-count": 1,
+            "name": "Points",
+            "service-desc": [
+                {
+                    "href": "/POINTS/?f=json",
+                    "title": "POINTS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/POINTS/",
+                    "title": "POINTS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Points"
+        },
+        {
+            "has-error": false,
+            "key": "POLYGONS",
+            "layer-count": 1,
+            "name": "Buildings",
+            "service-desc": [
+                {
+                    "href": "/POLYGONS/?f=json",
+                    "title": "POLYGONS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/POLYGONS/",
+                    "title": "POLYGONS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "OSM Buildings"
+        },
+        {
+            "has-error": false,
+            "key": "POSTGIS",
+            "layer-count": 1,
+            "name": "PostGIS",
+            "service-desc": [
+                {
+                    "href": "/POSTGIS/?f=json",
+                    "title": "POSTGIS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/POSTGIS/",
+                    "title": "POSTGIS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "OSM Water"
+        },
+        {
+            "has-error": false,
+            "key": "RAILWAYS",
+            "layer-count": 2,
+            "name": "Railways",
+            "service-desc": [
+                {
+                    "href": "/RAILWAYS/?f=json",
+                    "title": "RAILWAYS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/RAILWAYS/",
+                    "title": "RAILWAYS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Railways"
+        },
+        {
+            "has-error": false,
+            "key": "RASTER",
+            "layer-count": 1,
+            "name": "Raster",
+            "service-desc": [
+                {
+                    "href": "/RASTER/?f=json",
+                    "title": "RASTER",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/RASTER/",
+                    "title": "RASTER",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Raster"
+        },
+        {
+            "has-error": false,
+            "key": "RASTER-PIPELINE",
+            "layer-count": 1,
+            "name": "RASTER-PIPELINE",
+            "service-desc": [
+                {
+                    "href": "/RASTER-PIPELINE/?f=json",
+                    "title": "RASTER-PIPELINE",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/RASTER-PIPELINE/",
+                    "title": "RASTER-PIPELINE",
+                    "type": "text/html"
+                }
+            ],
+            "title": "RASTER-PIPELINE"
+        },
+        {
+            "has-error": false,
+            "key": "SLD",
+            "layer-count": 1,
+            "name": "Welcome!",
+            "service-desc": [
+                {
+                    "href": "/SLD/?f=json",
+                    "title": "SLD",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/SLD/",
+                    "title": "SLD",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Welcome!"
+        },
+        {
+            "has-error": false,
+            "key": "STAC",
+            "layer-count": 1,
+            "name": "STAC",
+            "service-desc": [
+                {
+                    "href": "/STAC/?f=json",
+                    "title": "STAC",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/STAC/",
+                    "title": "STAC",
+                    "type": "text/html"
+                }
+            ],
+            "title": "STAC"
+        },
+        {
+            "has-error": false,
+            "key": "STARS",
+            "layer-count": 3,
+            "name": "Stars!",
+            "service-desc": [
+                {
+                    "href": "/STARS/?f=json",
+                    "title": "STARS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/STARS/",
+                    "title": "STARS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Stars!"
+        },
+        {
+            "has-error": false,
+            "key": "TILES",
+            "layer-count": 1,
+            "name": "Tiles",
+            "service-desc": [
+                {
+                    "href": "/TILES/?f=json",
+                    "title": "TILES",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/TILES/",
+                    "title": "TILES",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Tiles"
+        },
+        {
+            "has-error": false,
+            "key": "TIMISOARA",
+            "layer-count": 1,
+            "name": "Timisoara",
+            "service-desc": [
+                {
+                    "href": "/TIMISOARA/?f=json",
+                    "title": "TIMISOARA",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/TIMISOARA/",
+                    "title": "TIMISOARA",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Timisoara"
+        },
+        {
+            "has-error": false,
+            "key": "VECTOR-TILES",
+            "layer-count": 1,
+            "name": "Vector Tiles",
+            "service-desc": [
+                {
+                    "href": "/VECTOR-TILES/?f=json",
+                    "title": "VECTOR-TILES",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/VECTOR-TILES/",
+                    "title": "VECTOR-TILES",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Vector Tiles"
+        },
+        {
+            "has-error": false,
+            "key": "WCS",
+            "layer-count": 1,
+            "name": "WCS",
+            "service-desc": [
+                {
+                    "href": "/WCS/?f=json",
+                    "title": "WCS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/WCS/",
+                    "title": "WCS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "Example WCS Mapfile"
+        },
+        {
+            "has-error": false,
+            "key": "WFS",
+            "layer-count": 1,
+            "name": "WFS",
+            "service-desc": [
+                {
+                    "href": "/WFS/?f=json",
+                    "title": "WFS",
+                    "type": "application/vnd.oai.openapi+json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "/WFS/",
+                    "title": "WFS",
+                    "type": "text/html"
+                }
+            ],
+            "title": "WFS"
+        }
+    ]
+}

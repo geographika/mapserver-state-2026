@@ -9,25 +9,160 @@
     </script>
 </section>
 
+<section data-markdown style="font-size:0.65em;">
+    <script type="text/template">
+        ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-138.html) MapServer Homepage
+
+        Builds an API from the [MapServer CONFIG file](https://mapserver.org/mapfile/config.html)
+
+        ```bash
+        CONFIG
+            ENV
+                MS_INDEX_TEMPLATE_DIRECTORY "/usr/local/share/mapserver/ogcapi/templates/html-index-bootstrap/"
+                # ...
+            END
+            MAPS
+                ARCGIS "/etc/mapserver/arcgis.map"
+                CLUSTERS "/etc/mapserver/clusters.map"
+                CONTOURS "/etc/mapserver/contours.map"
+                COUNTRIES "/etc/mapserver/countries.map"
+                DIRECTION "/etc/mapserver/direction.map"
+                GDALG "/etc/mapserver/gdalg.map"
+                LAKES "/etc/mapserver/lakes.map"
+                LANDUSE "/etc/mapserver/landuse.map"
+                LINES "/etc/mapserver/lines.map"
+                OGCAPI-FEATURES "/etc/mapserver/ogcapi-features.map"
+                OTHER-PROJECTIONS "/etc/mapserver/other-projections.map"
+                POINTS "/etc/mapserver/points.map"
+                POLYGONS "/etc/mapserver/polygons.map"
+                POSTGIS "/etc/mapserver/postgis.map"
+                RAILWAYS "/etc/mapserver/railways.map"
+                RASTER "/etc/mapserver/raster.map"
+                RASTER-PIPELINE "/etc/mapserver/raster-pipeline.map"
+                SLD "/etc/mapserver/sld.map"
+                STAC "/etc/mapserver/stac.map"
+                STARS "/etc/mapserver/stars.map"
+                TILES "/etc/mapserver/tiles.map"
+                TIMISOARA "/etc/mapserver/timisoara.map"
+                VECTOR-TILES "/etc/mapserver/vector-tiles.map"
+                WCS "/etc/mapserver/wcs.map"
+                WFS "/etc/mapserver/wfs.map"
+            END
+            ...
+        ```
+
+    </script>
+</section>
+
 <section data-markdown>
     <script type="text/template">
         ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-138.html) MapServer Homepage
 
-        <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
-            <img src="images/mapserver-index-page.png" style="max-width: 45%; border: 1px solid black;" />
-            <img src="images/mapserver-index-page-json.png" style="max-width: 45%; border: 1px solid black;" />
+        <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 500px;">
+            <img src="images/mapserver-index-page.png" style="max-width: 65%; border: 1px solid black;" />
+            <img src="images/mapserver-index-page-json.png" style="max-width: 35%; border: 1px solid black;" />
         </div>
     </script>
 </section>
 
-<section data-markdown data-background-image="images/users-between-lines-solid.svg" data-background-size="40%" data-background-opacity="10%">
+<section data-markdown style="font-size:0.65em;">
     <script type="text/template">
-        ## GDAL Pipeline Support
+        ## GDAL Vector Pipeline Support
 
-        - https://mapserver.github.io/getting-started-with-mapserver/advanced/gdalg/
+        Mapfile with inline pipeline
+
+        ```mapfile
+        LAYER
+            NAME "buffered_roads"
+            TYPE POLYGON
+            CONNECTIONTYPE OGR
+            # displayed on multiple lines for clarity
+            CONNECTION '{"type": "gdal_streamed_alg","command_line": "gdal vector pipeline 
+            ! read /etc/mapserver/data/osm/roads.fgb 
+            ! geom buffer --distance=0.0001"}'
+            DATA "0"
+            CLASS
+                STYLE
+                ...
+            END
+        END
+        ```
+
+        <div>
+        <object
+            type="image/svg+xml"
+            data="images/roads.gdalg.svg"
+            width="100%"
+            height="200">
+        </object>
+        </div>
 
     </script>
 </section>
+
+<section data-markdown data-background-image="images/vector-pipeline.png" data-background-size="100%" data-background-opacity="70%">
+    <script type="text/template">
+        ## GDAL Vector Pipeline Output
+
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/gdalg/">Workshop Tutorial Link</a></small>
+        </p>
+
+    </script>
+</section>
+
+<section data-markdown style="font-size:0.65em;">
+    <script type="text/template">
+        ## GDAL Raster Pipeline Support
+
+        Mapfile
+
+        ```mapfile
+        LAYER
+            NAME "dtm-pipeline"
+            DATA "data/raster/clipped.gdalg.json"
+            ...
+        END
+        ```
+
+        clipped.gdalg.json (displayed on mutliple lines for clarity)
+
+        ```json
+        {
+            "type": "gdal_streamed_alg",
+            "command_line": "gdal raster pipeline 
+            ! read /etc/mapserver/data/raster/clipped.tif
+            ! color-map --color-map /etc/mapserver/data/raster/color-map-percentage.txt
+            ! blend --operator=hsv-value --overlay 
+                [ read /etc/mapserver/data/raster/clipped.tif ! hillshade -z 2 ] "
+        }
+        ```
+
+        <div>
+        <object
+            type="image/svg+xml"
+            data="images/clipped.gdalg.svg"
+            width="100%"
+            height="300">
+        </object>
+        </div>
+
+    </script>
+</section>
+
+<section data-markdown style="font-size:0.65em;">
+    <script type="text/template">
+        ## GDAL Raster Pipeline Support
+
+         <img src="images/raster-pipeline.png" />
+
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/raster-pipeline/">Workshop Tutorial Link</a></small>
+        </p>
+    </script>
+</section>
+
+
 
 <section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
     <script type="text/template">
@@ -149,6 +284,16 @@
     <script type="text/template">
         ## OGCAPI Features: Filtering
 
+         <img class="bordered" src="images/queryables.png" style="width: 80%; vertical-align:middle;" />
+
+    </script>
+</section>
+
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGCAPI Features: Filtering
+
 CQL2-text
 CQL2-JSON
 
@@ -173,6 +318,21 @@ CQL2-JSON
         ```
 
     </script>
+</section>
+
+<section data-background-video="images/ogcfeatures-demo.mp4"
+         data-background-video-loop
+         data-background-video-muted
+         data-background-size="contain"
+>
+</section>
+
+
+<section data-background-video="images/ogcfeatures-ol-demo.mp4"
+         data-background-video-loop
+         data-background-video-muted
+         data-background-size="contain"
+>
 </section>
 
 <section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">

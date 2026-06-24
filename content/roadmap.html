@@ -16,49 +16,46 @@
     </script>
 </section>
 
-<section>
+
+<section data-markdown style="font-size:0.65em;">
     <script type="text/template">
-        YAML export and import added in [mappyfile](https://mappyfile.readthedocs.io/en/latest/yaml.html)
+        ## MapServer YAML Configuration
+
+        ```yaml
+        __type__: map
+        name: ITASCA
+        status: 'ON'
+        size:
+          - 600
+          - 600
+        projection:
+          - init=epsg:26915
+        extent:
+          - 388107.634400379
+          - 5203120.88405952
+          - 500896.339019834
+          - 5310243.30613897
+        units: METERS
+        shapepath: data
+        imagecolor:
+          - 255
+          - 255
+          - 255
+        imagetype: PNG
+        symbols:
+          - __type__: symbol
+            name: circle
+            type: ELLIPSE
+            points:
+              - - 1
+                - 1
+            filled: true
+
+          - __type__: symbol
+            name: star
+            type: VECTOR
+            filled: true
+            points:
+        ```
     </script>
-</section>
-
-<section>
-    <h3>MapServer YAML Configuration</h3>
-
-    <pre><code class="language-yaml" data-trim>
-__type__: map
-name: ITASCA
-status: 'ON'
-size:
-  - 600
-  - 600
-projection:
-  - init=epsg:26915
-extent:
-  - 388107.634400379
-  - 5203120.88405952
-  - 500896.339019834
-  - 5310243.30613897
-units: METERS
-shapepath: data
-imagecolor:
-  - 255
-  - 255
-  - 255
-imagetype: PNG
-symbols:
-  - __type__: symbol
-    name: circle
-    type: ELLIPSE
-    points:
-      - - 1
-        - 1
-    filled: true
-
-  - __type__: symbol
-    name: star
-    type: VECTOR
-    filled: true
-    points:
-  </code></pre>
 </section>

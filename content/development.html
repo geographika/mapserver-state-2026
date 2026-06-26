@@ -11,7 +11,7 @@
 
 <section data-markdown style="font-size:0.65em;">
     <script type="text/template">
-        ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-138.html) MapServer Homepage
+        ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-140.html) MapServer Homepage
 
         Builds an API from the [MapServer CONFIG file](https://mapserver.org/mapfile/config.html)
 
@@ -48,7 +48,6 @@
                 WCS "/etc/mapserver/wcs.map"
                 WFS "/etc/mapserver/wfs.map"
             END
-            ...
         ```
 
     </script>
@@ -97,6 +96,10 @@
         </object>
         </div>
 
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/gdalg/">Workshop Tutorial Link</a></small>
+        </p>
+
     </script>
 </section>
 
@@ -105,7 +108,7 @@
         ## GDAL Vector Pipeline Output
 
         <p>
-            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/gdalg/">Workshop Tutorial Link</a></small>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/gdalg.html">Live Demo</a></small>
         </p>
 
     </script>
@@ -113,11 +116,10 @@
 
 <section data-markdown style="font-size:0.65em;">
     <script type="text/template">
-        ## GDAL Raster Pipeline Support
-
-        Mapfile
+        ### GDAL Raster Pipeline Support
 
         ```mapfile
+        # mapfile
         LAYER
             NAME "dtm-pipeline"
             DATA "data/raster/clipped.gdalg.json"
@@ -125,7 +127,7 @@
         END
         ```
 
-        clipped.gdalg.json (displayed on mutliple lines for clarity)
+        clipped.gdalg.json (displayed on multiple lines for clarity)
 
         ```json
         {
@@ -162,16 +164,46 @@
     </script>
 </section>
 
-
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+<section data-markdown style="font-size:0.75em;">
     <script type="text/template">
-        ## MapServer 8.6 Patch Releases
+        ## STAC Support
 
-        - [MapServer 8.6.4](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-3-to-8-6-4) 2026-06-01
-        - [MapServer 8.6.3](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-2-to-8-6-3) 2026-05-07
-        - [MapServer 8.6.2](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-1-to-8-6-2) 2026-04-19
-        - [MapServer 8.6.1](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-0-to-8-6-1) 2026-03-23
+        ```scala
+        WEB
+            ...
+            # check the parameter is in the form -74.134,41.871,-73.694,42.089
+            BBOX '^-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?$'
+        END
+
+        END
+        LAYER
+            NAME "lcpri"
+            TYPE RASTER
+            DATA 'STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?
+                           &collections=usgs-lcmap-conus-v13&
+                           datetime=2021-01-01/2021-12-31&bbox=%BBOX%\":asset=lcpri'
+            CLASS
+              EXPRESSION ([pixel] = 5)
+              STYLE
+                 COLOR 28 107 160
+               END
+            END
+            ...
+        ```
+
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/stac/">Workshop Tutorial Link</a></small>
+        </p>
+    </script>
+</section>
+
+<section data-markdown data-background-image="images/stac.png" data-background-size="100%" data-background-opacity="70%">
+    <script type="text/template">
+        ## STAC Interactive Map
+
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/stac.html">Live Demo</a></small>
+        </p>
 
     </script>
 </section>
@@ -198,152 +230,6 @@
                 "oga_compliance_mode" "true" # unknown parameters will throw an error
         ```
 
-    </script>
-</section>
-
-<section data-markdown data-background="images/lock.svg" data-background-opacity="0.05" data-background-size="50%" style="font-size:0.65em;">
-    <script type="text/template">
-        ## Security Policy
-
-        | Version | Supported | Support Until |
-        |---------|-----------|---------------|
-        | 8.6.x   | ✅        |               |
-        | 8.4.x   | ❌        |               |
-        | 8.2.x   | ❌        |               |
-        | 8.0.x   | ❌        |               |
-        | 7.6.x   | ❌        | 2025-09-12    |
-        | 7.4.x   | ❌        |               |
-        | 7.2.x   | ❌        |               |
-        | 7.0.x   | ❌        |               |
-        | 6.4.x   | ❌        |               |
-        | < 6.4   | ❌        |               |
-
-        See the [MapServer Security Policy](https://github.com/MapServer/MapServer/blob/main/SECURITY.md)
-    </script>
-</section>
-
-<section data-markdown>
-    <script type="text/template">
-        ## Security Best Practices
-
-        ```mapfile
-        MAP
-            WEB
-                METADATA
-                    "ows_sld_enabled" "false"
-        ```
-
-    </script>
-</section>
-
-<section data-markdown data-background="images/lock.svg" data-background-opacity="0.05" data-background-size="50%" style="font-size:0.85em;">
-    <script type="text/template">
-        ## Security Best Practices
-
-        - Restrict **outbound** server access
-        - **Read-only** database access, only tables required
-        - Service accounts for database and network access
-        - Ensure `VALIDATION` on any [Run-time Substitution](https://mapserver.org/cgi/runsub.html) variables
-        - Don't create Mapfiles based on unvalidated user input
-
-    </script>
-</section>
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
-    <script type="text/template">
-        ## MapServer 8.8 Roadmap
-
-
-        [8.8 Release Roadmap](https://github.com/MapServer/MapServer/milestone/66)
-
-
-
-    </script>
-</section>
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
-    <script type="text/template">
-        ## OGCAPI Features: Filtering
-
-
-        [OGCAPI Features Part 3 Filtering: add support for 'Queryables' and 'Queryables as query parameter'](https://github.com/MapServer/MapServer/pull/7433)
-        [OGC API Features: implement CQL2 text filtering from Part 3](https://github.com/MapServer/MapServer/pull/7436)
-
-        ```mapfile
-        LAYER
-            METADATA
-                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
-            END
-        END
-        ```
-
-    </script>
-</section>
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
-    <script type="text/template">
-        ## OGCAPI Features: Filtering
-
-         <img class="bordered" src="images/queryables.png" style="width: 80%; vertical-align:middle;" />
-
-    </script>
-</section>
-
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
-    <script type="text/template">
-        ## OGCAPI Features: Filtering
-
-CQL2-text
-CQL2-JSON
-
-    </script>
-</section>
-
-
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
-    <script type="text/template">
-        ## OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls
-
-
-        [OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls](https://github.com/MapServer/MapServer/pull/7433)
-
-        ```mapfile
-        LAYER
-            METADATA
-                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
-            END
-        END
-        ```
-
-    </script>
-</section>
-
-<section data-background-video="images/ogcfeatures-demo.mp4"
-         data-background-video-loop
-         data-background-video-muted
-         data-background-size="contain"
->
-</section>
-
-
-<section data-background-video="images/ogcfeatures-ol-demo.mp4"
-         data-background-video-loop
-         data-background-video-muted
-         data-background-size="contain"
->
-</section>
-
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
-    <script type="text/template">
-        ## MapServer 8.8 Performance Improvements
-
-        - [Add new fallback_to_map_extent to avoid layer extent calculations](https://github.com/MapServer/MapServer/pull/7449)
-        - [Allow `use_default_extent_for_getfeature` to be set at the MAP level](https://github.com/MapServer/MapServer/pull/7453)
-        - [WMS: rework building of the layer tree to make it faster, and understandable!](https://github.com/MapServer/MapServer/pull/7410)
-
-          + On a 103 MB Mapfile with 6,130 layers and 3 level of nesting, WMS GetCapabilities response goes from **56** seconds to **5** seconds
     </script>
 </section>
 

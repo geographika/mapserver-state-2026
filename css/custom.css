@@ -17,3 +17,10 @@
     color: #888;
     text-decoration: none;
 }
+
+.chart {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}

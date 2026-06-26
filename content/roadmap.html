@@ -1,3 +1,103 @@
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## MapServer 8.8 Roadmap
+
+
+        [8.8 Release Roadmap](https://github.com/MapServer/MapServer/milestone/66)
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGCAPI Features: Filtering
+
+
+        [OGCAPI Features Part 3 Filtering: add support for 'Queryables' and 'Queryables as query parameter'](https://github.com/MapServer/MapServer/pull/7433)
+        [OGC API Features: implement CQL2 text filtering from Part 3](https://github.com/MapServer/MapServer/pull/7436)
+
+        ```mapfile
+        LAYER
+            METADATA
+                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
+            END
+        END
+        ```
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGCAPI Features: Filtering
+
+         <img class="bordered" src="images/queryables.png" style="width: 80%; vertical-align:middle;" />
+
+    </script>
+</section>
+
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGCAPI Features: Filtering
+
+CQL2-text
+CQL2-JSON
+
+    </script>
+</section>
+
+
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls
+
+
+        [OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls](https://github.com/MapServer/MapServer/pull/7433)
+
+        ```mapfile
+        LAYER
+            METADATA
+                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
+            END
+        END
+        ```
+
+    </script>
+</section>
+
+<section data-background-video="images/ogcfeatures-demo.mp4"
+         data-background-video-loop
+         data-background-video-muted
+         data-background-size="contain"
+>
+</section>
+
+
+<section data-background-video="images/ogcfeatures-ol-demo.mp4"
+         data-background-video-loop
+         data-background-video-muted
+         data-background-size="contain"
+>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
+    <script type="text/template">
+        ## MapServer 8.8 Performance Improvements
+
+        - [Add new fallback_to_map_extent to avoid layer extent calculations](https://github.com/MapServer/MapServer/pull/7449)
+        - [Allow `use_default_extent_for_getfeature` to be set at the MAP level](https://github.com/MapServer/MapServer/pull/7453)
+        - [WMS: rework building of the layer tree to make it faster, and understandable!](https://github.com/MapServer/MapServer/pull/7410)
+
+          + On a 103 MB Mapfile with 6,130 layers and 3 level of nesting, WMS GetCapabilities response goes from **56** seconds to **5** seconds
+    </script>
+</section>
+
+
+
+
+
 <section data-markdown>
     <script type="text/template">
         ## Sponsorhip

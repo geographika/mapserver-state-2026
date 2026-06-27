@@ -37,6 +37,9 @@
         Reveal.initialize({
             center: true,
             hash: true,
+            external: {
+                async: false  // force synchronous loading (as lots of survey slides)
+            },
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
             dependencies: [

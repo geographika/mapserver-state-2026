@@ -8,28 +8,52 @@
     </script>
 </section>
 
+<section data-markdown style="font-size:0.55em;">
+    <script type="text/template">
+        ## OGC Features API
+
+        | Part | Title | Status | Implemented in MapServer |
+        |------|-------|--------|--------------------------|
+        | 1 | Core | ✅ Published | ✅ |
+        | 2 | Coordinate Reference Systems by Reference | ✅ Published | ✅ |
+        | 3 | Filtering | ✅ Published | 🔜 8.8 |
+        | 4 | Create, Replace, Update and Delete | 📝 Draft | ❌ |
+        | 5 | Schemas | 📝 Draft | 🔜 8.8 |
+        | 6 | Property Selection | 📝 Draft | ❌ |
+        | 7 | Geometry Simplification | 📝 Draft | ❌ |
+        | 8 | Sorting | 📝 Draft | 🔜 8.8 |
+        | 9 | Text Search | 📝 Draft | ❌ |
+        | 10 | Search/Queries | 📝 Proposal | ❌ |
+
+     </script>
+</section>
+
 <section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
     <script type="text/template">
-        ## OGCAPI Features: Filtering
+        ## OGCAPI Features: Part 3 Filtering
 
-
-        [OGCAPI Features Part 3 Filtering: add support for 'Queryables' and 'Queryables as query parameter'](https://github.com/MapServer/MapServer/pull/7433)
-        [OGC API Features: implement CQL2 text filtering from Part 3](https://github.com/MapServer/MapServer/pull/7436)
-
-        ```mapfile
+        ```scala
         LAYER
             METADATA
-                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
+                "oga_queryable_items" "all" # make all properties queryable
+                # "oga_queryable_items" "building,name" # only allow a subset
+                ...
             END
         END
         ```
 
+        Pull Requests:
+
+        - [OGCAPI Features Part 3 Filtering: add support for 'Queryables' and 'Queryables as query parameter'](https://github.com/MapServer/MapServer/pull/7433)
+        - [OGC API Features: implement CQL2 text filtering from Part 3](https://github.com/MapServer/MapServer/pull/7436)
     </script>
 </section>
 
 <section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
     <script type="text/template">
-        ## OGCAPI Features: Filtering
+        ## OGCAPI Features: Part 3 Filtering
+
+        `ogcapi/collections/buildings/queryables?f=html`
 
          <img class="bordered" src="images/queryables.png" style="width: 80%; vertical-align:middle;" />
 
@@ -37,33 +61,51 @@
 </section>
 
 
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
     <script type="text/template">
-        ## OGCAPI Features: Filtering
+        ## OGCAPI Features: CQL2
 
-CQL2-text
-CQL2-JSON
+        CQL2: Common Query Language 2, an OGC standard for defining filters on feature data
+
+        - **CQL2-text**
+
+        `ogcapi/collections/buildings/items?f=html&filter=building+LIKE+'%hospital%'&filter-lang=cql2-text`
+
+        - **CQL2-JSON**
+
+        ```json
+        {
+            "op": "like",
+            "args": [
+            { "property": "building" },
+            "%hospital%"
+            ]
+        }
+        ```
 
     </script>
 </section>
 
 
 
-<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
     <script type="text/template">
-        ## OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls
+        ## OGC API Features - Part 8 Sorting
 
+        `ogcapi/collections/buildings/items?f=html&sortby=+building,-name`
 
-        [OGC API Features - Part 5 : implement /collections/{collid}/schema and /collections/{collid}/sortables API calls](https://github.com/MapServer/MapServer/pull/7433)
-
-        ```mapfile
+        ```scala
         LAYER
+            NAME "buildings"
             METADATA
-                "oga_queryable_items" "CTY_NAME,CTYONLY_,LASTMOD"
+                "oga_sortable_items" "all" # make all properties sortable
+                # "oga_sortable_items" "building,name" # only allow a subset
+                ...
             END
         END
         ```
 
+        [Pull Request](https://github.com/MapServer/MapServer/pull/7443)
     </script>
 </section>
 
@@ -73,20 +115,115 @@ CQL2-JSON
          data-background-size="contain"
 >
     <p>
-        <small><a href="https://mapserver-workshop-k8hvw.ondigitalocean.app/timisoara/ogcapi/">Live Demo</a></small>
+        <small><a href="https://mapserver-workshop-k8hvw.ondigitalocean.app/timisoara/ogcapi/">Live Workshop Demo</a></small>
     </p>
 </section>
 
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
+    <script type="text/template">
+        ## OGC API Features - Part 5 Schemas
+
+        `ogcapi/collections/buildings/queryables?f=json`
+
+        ```json
+        {
+          "$id": "/timisoara/ogcapi/collections/buildings/queryables",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": false,
+          "description": "\u003C!-- Warning: unable to set the collection description. --\u003E",
+          "properties": {
+            "building": {
+              "description": "Queryable item 'building'",
+              "type": "string"
+            },
+            "fid": {
+              "description": "Queryable item 'fid'",
+              "type": "integer",
+              "x-ogc-role": "id"
+            },
+            "geom": {
+              "description": "The geometry of the collection.",
+              "format": "geometry-polygon-or-multipolygon",
+              "title": "geom",
+              "x-ogc-role": "primary-geometry"
+            },
+            "name": {
+              "description": "Queryable item 'name'",
+              "type": "string"
+            },
+            "osm_id": {
+              "description": "Queryable item 'osm_id'",
+              "type": "string"
+            }
+          },
+          "title": "Buildings",
+          "type": "object"
+        }
+        ```
+
+    </script>
+</section>
 
 <section data-background-video="images/ogcfeatures-ol-demo.mp4"
          data-background-video-loop
          data-background-video-muted
          data-background-size="contain"
 >
-     <div class="demo-link">
-        <small><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/timisoara.html">Live Demo</a></small>
-    </div>
+    <h4><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/timisoara.html">Live Workshop Demo</a></h4>
+    <p style="position: absolute; bottom: -600px; font-size: 0.45em;">
+        Filtering OpenStreetMap buildings in Timișoara using OGC Features Filtering API
+    </p>
+</section>
 
+<section data-markdown style="font-size:0.65em;">
+    <script type="text/template">
+        ## Support for non-EPSG Coordinate Reference Systems
+
+        ```scala
+        MAP
+            PROJECTION
+                "ESRI:53009"
+            END
+            WEB
+                METADATA
+                    "ows_srs" "ESRI:53009 EPSG:4326"
+                END
+            END
+            LAYER
+                NAME "cities"
+                TYPE POINT
+                PROJECTION
+                    "ESRI:53009"
+                END
+            ...
+        ```
+
+        Sample requests:
+
+        ```
+        # WMS
+        https://example.com/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=countries&CRS=ESRI:53009&BBOX=-27029863.5,-12247906.8984375,27029863.5,12247906.8984375...
+        # WFS
+        https://example.com/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:cities&SRSNAME=ESRI:53009&BBOX=-20366251.317708332,-10499881.871744791,20366251.317708332,10499881.871744791...
+        # WCS
+        https://example.com/?&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=raster&SUBSETTINGCRS=http://www.opengis.net/def/crs/ESRI/0/53009&OUTPUTCRS=http://www.opengis.net/def/crs/ESRI/0/53009&SUBSET=x(-18019909,18019909)&SUBSET=y(-8155885.896354166,8155885.896354166)&SCALESIZE=x(1536),y(695)...
+        ```
+
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/other-projections/">Workshop Tutorial Link</a></small>
+        </p>
+    </script>
+</section>
+
+<section data-markdown data-background-image="images/Mollweide.png" data-background-size="100%" data-background-opacity="70%">
+    <script type="text/template">
+        ##  Mollweide Projection Interactive Map
+
+        <p>
+            <small><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/other-projections.html">Live Demo</a></small>
+        </p>
+
+    </script>
 </section>
 
 <section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%" style="font-size:0.65em;">
@@ -103,66 +240,3 @@ CQL2-JSON
 
 
 
-
-
-<section data-markdown>
-    <script type="text/template">
-        ## Sponsorhip
-    </script>
-</section>
-
-<section>
-    <h2 style="font-style: italic;">
-        “Better documentation, mapfile as yaml”
-    </h2>
-</section>
-
-<section>
-    <script type="text/template">
-        YAML export and import added in [mappyfile](https://mappyfile.readthedocs.io/en/latest/yaml.html)
-    </script>
-</section>
-
-
-<section data-markdown style="font-size:0.65em;">
-    <script type="text/template">
-        ## MapServer YAML Configuration
-
-        ```yaml
-        __type__: map
-        name: ITASCA
-        status: 'ON'
-        size:
-          - 600
-          - 600
-        projection:
-          - init=epsg:26915
-        extent:
-          - 388107.634400379
-          - 5203120.88405952
-          - 500896.339019834
-          - 5310243.30613897
-        units: METERS
-        shapepath: data
-        imagecolor:
-          - 255
-          - 255
-          - 255
-        imagetype: PNG
-        symbols:
-          - __type__: symbol
-            name: circle
-            type: ELLIPSE
-            points:
-              - - 1
-                - 1
-            filled: true
-
-          - __type__: symbol
-            name: star
-            type: VECTOR
-            filled: true
-            points:
-        ```
-    </script>
-</section>

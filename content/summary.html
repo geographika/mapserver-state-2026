@@ -1,19 +1,71 @@
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
+        ## Project and Community News
+
+    </script>
+</section>
+
+<section data-markdown >
+    <script type="text/template">
+        ## mappyfile
+
+        - [v1.2.0 Release](https://mappyfile.readthedocs.io/en/latest/HISTORY.html#id1)
+        - User survey comment: *“Better documentation, mapfile as yaml”*
+        - YAML export and import added in [mappyfile](https://mappyfile.readthedocs.io/en/latest/yaml.html)
+
+    </script>
+</section>
+
+
+<section data-markdown style="font-size:0.65em;">
+    <script type="text/template">
+        ## MapServer YAML Configuration
+
+        ```yaml
+        __type__: map
+        name: ITASCA
+        status: 'ON'
+        size:
+          - 600
+          - 600
+        projection:
+          - init=epsg:26915
+        extent:
+          - 388107.634400379
+          - 5203120.88405952
+          - 500896.339019834
+          - 5310243.30613897
+        units: METERS
+        shapepath: data
+        imagecolor:
+          - 255
+          - 255
+          - 255
+        imagetype: PNG
+        symbols:
+          - __type__: symbol
+            name: circle
+            type: ELLIPSE
+            points:
+              - - 1
+                - 1
+            filled: true
+
+          - __type__: symbol
+            name: star
+            type: VECTOR
+            filled: true
+            points:
+        ```
+    </script>
+</section>
+
 <section data-markdown data-background-image="images/users-between-lines-solid.svg" data-background-size="40%" data-background-opacity="10%">
     <script type="text/template">
         ## Workshop - Getting Started with MapServer
 
         - Presented here at [FOSS4G Europe 2026](https://talks.osgeo.org/foss4g-europe-2026-workshops/talk/LLKSRF/) on Friday!
         - Available at https://mapserver.github.io/getting-started-with-mapserver/
-    </script>
-</section>
-
-<section data-markdown data-background-image="images/heart-regular.svg" data-background-size="20%" data-background-opacity="10%">
-    <script type="text/template">
-        ### Supporting MapServer
-
-        [Sponsorship](https://github.com/MapServer/MapServer/wiki/Sponsorship) and [Sponsorship Opportunities](https://github.com/MapServer/MapServer/wiki/MapServer-2025-Sponsorship-Opportunities)
-        - Features - OGC API - Maps, Coverages, Tiles
-        - Security and Vulnerability Patches, Code Maintenance, Documentation
     </script>
 </section>
 
@@ -31,21 +83,40 @@
     </script>
 </section>
 
+<section data-markdown data-background-image="images/users-between-lines-solid.svg" data-background-size="40%" data-background-opacity="10%">
+    <script type="text/template">
+        ### FOSS4G Europe 2026 Talk
+
+        - M*apFile Preview: A Browser-Based Tool for Editing and Testing MapServer Mapfiles*
+        - Monday, June 29, 3:30 PM
+        - https://github.com/Consortis-Geospatial/Mapfile-Preview
+
+    </script>
+</section>
+
+
+
+<section data-markdown data-background-image="images/heart-regular.svg" data-background-size="20%" data-background-opacity="10%">
+    <script type="text/template">
+        ### Supporting MapServer
+
+        [Sponsorship](https://github.com/MapServer/MapServer/wiki/Sponsorship) and [Sponsorship Opportunities](https://github.com/MapServer/MapServer/wiki/MapServer-2025-Sponsorship-Opportunities)
+        - Features - OGC API - Maps, Coverages, Tiles
+        - Security and Vulnerability Patches, Code Maintenance, Documentation
+    </script>
+</section>
+
 <section data-markdown>
     <script type="text/template">
         ### Communication Channels
 
-        - [Mailing Lists](https://mapserver.org/community/lists.html)
-        <img class="plain" src="images/mailman.png" style="background: none;vertical-align:middle;" />
+        - [Mailing Lists](https://mapserver.org/community/lists.html) <img class="plain" src="images/mailman.png" style="background: none;vertical-align:middle;" />
+          - [Users](https://lists.osgeo.org/mailman/listinfo/mapserver-users)
+          - [Developers](https://lists.osgeo.org/mailman/listinfo/mapserver-dev)
 
-        - [Users](https://lists.osgeo.org/mailman/listinfo/mapserver-users)
-        - [Developers](https://lists.osgeo.org/mailman/listinfo/mapserver-dev)
-
-        - [@mapserver](https://fosstodon.org/@mapserver)
-        <img class="plain" src="images/fosstodon.png" style="background: none;vertical-align:middle;height: 24px" />
+        - [@mapserver](https://fosstodon.org/@mapserver) <img class="plain" src="images/fosstodon.png" style="background: none;vertical-align:middle;height: 24px" />
         - [IRC](https://mapserver.org/community/irc.html)
-        - [GIS StackExchange](https://gis.stackexchange.com/questions/tagged/mapserver)
-        <img class="plain" src="images/gis_stackexchange.png" style="background: none;vertical-align:middle;" />
+        - [GIS StackExchange](https://gis.stackexchange.com/questions/tagged/mapserver) <img class="plain" src="images/gis_stackexchange.png" style="background: none;vertical-align:middle;" />
 
     </script>
 </section>

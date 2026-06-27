@@ -24,15 +24,3 @@
     margin: 0 auto;
     border: 1px solid #ccc;
 }
-
-.overlay {
-    position: absolute;
-    inset: 0;
-}
-
-.reveal .slides section .demo-link {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-weight: bold;
-}

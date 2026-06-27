@@ -1,5 +1,28 @@
 <section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
     <script type="text/template">
+        ## MapServer Security
+
+    </script>
+</section>
+
+
+<section data-markdown>
+    <script type="text/template">
+        ## Security Advisories
+
+        <div>
+            <object
+                type="image/svg+xml"
+                data="images/security_advisories.svg"
+                height="65%">
+            </object>
+        </div>
+
+    </script>
+</section>
+
+<section data-markdown data-background="images/MapServer_logo.svg.png" data-background-opacity="0.25" data-background-size="50%">
+    <script type="text/template">
         ## MapServer 8.6 Patch Releases
 
         - [MapServer 8.6.4](https://mapserver.org/development/changelog/changelog-8-6.html#changes-from-8-6-3-to-8-6-4) 2026-06-01
@@ -31,25 +54,19 @@
     </script>
 </section>
 
-<section data-markdown>
-    <script type="text/template">
-        ## Security Best Practices
-
-        ```mapfile
-        MAP
-            WEB
-                METADATA
-                    "ows_sld_enabled" "false"
-        ```
-
-    </script>
-</section>
-
 <section data-markdown data-background="images/lock.svg" data-background-opacity="0.05" data-background-size="50%" style="font-size:0.85em;">
     <script type="text/template">
         ## Security Best Practices
 
         - Restrict **outbound** server access
+
+          ```mapfile
+          MAP
+              WEB
+                  METADATA
+                      "ows_sld_enabled" "false"
+          ```
+
         - **Read-only** database access, only tables required
         - Service accounts for database and network access
         - Ensure `VALIDATION` on any [Run-time Substitution](https://mapserver.org/cgi/runsub.html) variables

@@ -55,7 +55,7 @@
 
 <section data-markdown>
     <script type="text/template">
-        ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-138.html) MapServer Homepage
+        ## [RFC 140](https://mapserver.org/development/rfc/ms-rfc-140.html) MapServer Homepage
 
         <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 500px;">
             <img src="images/mapserver-index-page.png" style="max-width: 65%; border: 1px solid black;" />
@@ -166,7 +166,7 @@
 
 <section data-markdown style="font-size:0.75em;">
     <script type="text/template">
-        ## STAC Support
+        ## SpatioTemporal Asset Catalogs (STAC) Support
 
         ```scala
         WEB
@@ -203,57 +203,6 @@
 
         <p>
             <small><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/stac.html">Live Demo</a></small>
-        </p>
-
-    </script>
-</section>
-
-<section data-markdown style="font-size:0.65em;">
-    <script type="text/template">
-        ## Support for non-EPSG Coordinate Reference Systems
-
-        ```scala
-        MAP
-            PROJECTION
-                "ESRI:53009"
-            END
-            WEB
-                METADATA
-                    "ows_srs" "ESRI:53009 EPSG:4326"
-                END
-            END
-            LAYER
-                NAME "cities"
-                TYPE POINT
-                PROJECTION
-                    "ESRI:53009"
-                END
-            ...
-        ```
-
-        Sample requests:
-
-        ```
-        # WMS
-        https://example.com/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=countries&CRS=ESRI:53009&BBOX=-27029863.5,-12247906.8984375,27029863.5,12247906.8984375...
-        # WFS
-        https://example.com/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:cities&SRSNAME=ESRI:53009&BBOX=-20366251.317708332,-10499881.871744791,20366251.317708332,10499881.871744791...
-        # WCS
-        https://example.com/?&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=raster&SUBSETTINGCRS=http://www.opengis.net/def/crs/ESRI/0/53009&OUTPUTCRS=http://www.opengis.net/def/crs/ESRI/0/53009&SUBSET=x(-18019909,18019909)&SUBSET=y(-8155885.896354166,8155885.896354166)&SCALESIZE=x(1536),y(695)...
-        ```
-
-        <p>
-            <small><a href="https://mapserver.github.io/getting-started-with-mapserver/advanced/other-projections/">Workshop Tutorial Link</a></small>
-        </p>
-    </script>
-</section>
-
-<section data-markdown data-background-image="images/ Mollweide.png" data-background-size="100%" data-background-opacity="70%">
-    <script type="text/template">
-        ##  Mollweide Projection Interactive Map
-
-        <p>
-            <small><a href="https://mapserver.github.io/getting-started-with-mapserver-demo/other-projections.html">Live Demo</a></small>
         </p>
 
     </script>

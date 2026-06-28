@@ -12,7 +12,7 @@
     <script type="text/template">
         ## OGC Features API
 
-        | Part | Title | Status | Implemented in MapServer |
+        | Part | Title | OGC Status | Implemented in MapServer |
         |------|-------|--------|--------------------------|
         | 1 | Core | ✅ Published | ✅ |
         | 2 | Coordinate Reference Systems by Reference | ✅ Published | ✅ |
@@ -69,7 +69,7 @@
 
         - **CQL2-text**
 
-        `ogcapi/collections/buildings/items?f=html&filter=building+LIKE+'%hospital%'&filter-lang=cql2-text`
+        `ogcapi/collections/buildings/items?filter=building+LIKE+'%hospital%'&filter-lang=cql2-text`
 
         - **CQL2-JSON**
 
@@ -83,6 +83,10 @@
         }
         ```
 
+        - **Simple Filtering**
+
+        `ogcapi/collections/buildings/items?building=hospital`
+
     </script>
 </section>
 
@@ -92,7 +96,7 @@
     <script type="text/template">
         ## OGC API Features - Part 8 Sorting
 
-        `ogcapi/collections/buildings/items?f=html&sortby=+building,-name`
+        `ogcapi/collections/buildings/items?sortby=+building,-name`
 
         ```scala
         LAYER
